@@ -6,7 +6,7 @@ import Three from './three';
 document.addEventListener('DOMContentLoaded', () => {});
 
 window.addEventListener('load', () => {
-  const canvas = document.querySelector('#canvas');
+  const canvas = document.querySelector<HTMLCanvasElement>('#canvas');
   if (canvas) {
     return new Three(canvas);
   }

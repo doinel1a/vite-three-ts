@@ -11,7 +11,18 @@ const device = {
 };
 
 export default class Three {
-  constructor(canvas) {
+  private canvas: HTMLCanvasElement;
+  private scene: T.Scene;
+  private camera: T.PerspectiveCamera;
+  private renderer: T.WebGLRenderer;
+  private controls: OrbitControls;
+  private clock: T.Clock;
+  private ambientLight!: T.AmbientLight;
+  private planeGeometry!: T.PlaneGeometry;
+  private planeMaterial!: T.ShaderMaterial;
+  private planeMesh!: T.Mesh;
+
+  constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
 
     this.scene = new T.Scene();
@@ -40,7 +51,7 @@ export default class Three {
   }
 
   setLights() {
-    this.ambientLight = new T.AmbientLight(new T.Color(1, 1, 1, 1));
+    this.ambientLight = new T.AmbientLight(new T.Color(1, 1, 1));
     this.scene.add(this.ambientLight);
   }
 
@@ -52,7 +63,7 @@ export default class Three {
       fragmentShader: fragment,
       vertexShader: vertex,
       uniforms: {
-        progress: { type: 'f', value: 0 }
+        progress: { value: 0 }
       }
     });
 

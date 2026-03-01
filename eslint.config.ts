@@ -1,18 +1,18 @@
-import js from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier/flat';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
-import sonarjs from 'eslint-plugin-sonarjs';
+import { configs as sonarjs } from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-export default [
-  js.configs.recommended,
-  sonarjs.configs.recommended,
+export default tseslint.config(
+  ...tseslint.configs.recommended,
+  sonarjs.recommended,
   unicorn.configs.recommended,
   prettierConfig,
   prettierPlugin,
   {
-    files: ['**/*.js'],
+    files: ['**/*.{ts,js}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -31,4 +31,4 @@ export default [
   {
     ignores: ['dist/**', 'node_modules/**', '**/*.html']
   }
-];
+);

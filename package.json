@@ -11,6 +11,7 @@
     "type": "git",
     "url": "https://github.com/doinel1a/vite-three-ts"
   },
+  "packageManager": "pnpm@11.3.0",
   "scripts": {
     "prepare": "husky",
     "postinstall": "playwright install",
